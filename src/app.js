@@ -5,8 +5,9 @@ const hbs =  require("hbs");
 const Register = require("./models/register");
 const bcrypt = require("bcryptjs");
 require("./db/conn");
+require('dotenv').config();
 
-const port = process.env.PORT||3000;
+const port = process.env.PORT||4000;
 
 const static_path = path.join(__dirname,"../public");
 const views_path = path.join(__dirname,"../templates/views");
@@ -48,17 +49,24 @@ app.get("/register",(req,res)=>{
 
 app.post("/register",async(req,res)=>{
     try{
+        const {fname,lname,contact,email,address,userid,passwrd} = req.body;
         const registeremployee =  new Register({
-            fname: req.body.fname,
-            mail: req.body.mail,
-            passwrd: req.body.passwrd,
-            gender: req.body.gender
+            fname,lname,contact,email,address,userid,passwrd
+            // fname:req.body.fname,
+            // lname:req.body.lname,
+            // contact:req.body.contact,
+            // email:req.body.email,
+            // address:req.body.address,
+            // userid:req.body.userid,
+            // passwrd:req.body.passwrd 
+            
         })
 
         const registered = await registeremployee.save();
         res.render("login")
 
     }catch(e){
+        console.log(e);
         res.status(400).send(e);
     }
 })
