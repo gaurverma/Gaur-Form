@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 require("./db/conn");
 require('dotenv').config();
 
-const port = process.env.PORT||4000;
+const port = process.env.PORT||5000;
 
 const static_path = path.join(__dirname,"../public");
 const views_path = path.join(__dirname,"../templates/views");
@@ -43,7 +43,7 @@ app.post("/login",async(req,res)=>{
         res.status(400).send("Invalid email or Password");
     }})
 
-app.get("/register",(req,res)=>{
+app.get("/",(req,res)=>{
     res.render("register");
 })
 
