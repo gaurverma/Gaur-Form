@@ -30,12 +30,12 @@ app.post("/login",async(req,res)=>{
         const email = req.body.mail;
         const password = req.body.passwrd;
         console.log(email + " " + password);
-        const user = await Register.findOne({mail:email});
+        const user = await Register.findOne({email:email});
         console.log(user);
         if(user.passwrd == password){
             res.status(201).send("Welcome to the home page");
         }else{
-            res.send("invalid username or Password");
+            res.send("invalid username or password");
         }
 
     }catch(e){
@@ -51,15 +51,7 @@ app.post("/register",async(req,res)=>{
     try{
         const {fname,lname,contact,email,address,userid,passwrd} = req.body;
         const registeremployee =  new Register({
-            fname,lname,contact,email,address,userid,passwrd
-            // fname:req.body.fname,
-            // lname:req.body.lname,
-            // contact:req.body.contact,
-            // email:req.body.email,
-            // address:req.body.address,
-            // userid:req.body.userid,
-            // passwrd:req.body.passwrd 
-            
+            fname,lname,contact,email,address,userid,passwrd 
         })
 
         const registered = await registeremployee.save();
