@@ -30,12 +30,12 @@ app.post("/login",async(req,res)=>{
         const email = req.body.mail;
         const password = req.body.passwrd;
         console.log(email + " " + password);
-        const user = await Register.findOne({mail:email});
+        const user = await Register.findOne({email:email});
         console.log(user);
-        if(user.passwrd === password){
+        if(user.passwrd == password){
             res.status(201).send("Welcome to the home page");
         }else{
-            res.send("invalid username or Password");
+            res.send("Invalid email or Password");
         }
 
     }catch(e){
