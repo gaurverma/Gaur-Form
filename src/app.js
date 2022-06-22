@@ -32,7 +32,7 @@ app.post("/login",async(req,res)=>{
         console.log(email + " " + password);
         const user = await Register.findOne({mail:email});
         console.log(user);
-        if(user.passwrd === password){
+        if(user.passwrd == password){
             res.status(201).send("Welcome to the home page");
         }else{
             res.send("invalid username or Password");
