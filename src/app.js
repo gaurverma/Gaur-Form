@@ -51,15 +51,7 @@ app.post("/register",async(req,res)=>{
     try{
         const {fname,lname,contact,email,address,userid,passwrd} = req.body;
         const registeremployee =  new Register({
-            fname,lname,contact,email,address,userid,passwrd
-            // fname:req.body.fname,
-            // lname:req.body.lname,
-            // contact:req.body.contact,
-            // email:req.body.email,
-            // address:req.body.address,
-            // userid:req.body.userid,
-            // passwrd:req.body.passwrd 
-            
+            fname,lname,contact,email,address,userid,passwrd 
         })
 
         const registered = await registeremployee.save();
